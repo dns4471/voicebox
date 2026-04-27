@@ -1,0 +1,338 @@
+{
+  "common": {
+    "cancel": "취소",
+    "save": "저장",
+    "delete": "삭제",
+    "edit": "편집",
+    "close": "닫기",
+    "confirm": "확인",
+    "loading": "로딩 중…",
+    "error": "오류",
+    "unknown": "알 수 없음",
+    "unknownError": "알 수 없는 오류"
+  },
+  "nav": {
+    "generate": "생성",
+    "stories": "스토리",
+    "captures": "캡처",
+    "voices": "음성",
+    "effects": "효과",
+    "audio": "오디오",
+    "models": "모델",
+    "settings": "설정",
+    "updateBadge": "업데이트"
+  },
+  "captures": {
+    "title": "캡처",
+    "beta": "베타",
+    "searchPlaceholder": "전사 내용 검색…",
+    "snippetEmpty": "(전사 내용 없음)",
+    "noTranscriptError": "캡처된 전사 내용이 아직 없습니다",
+    "captureCardLabel": "캡처 · {{when}}",
+    "header": {
+      "modelSummary": "Whisper {{stt}} · Qwen3 · {{llm}}"
+    },
+    "source": {
+      "dictation": "받아쓰기",
+      "recording": "녹음",
+      "file": "파일"
+    },
+    "transcript": {
+      "refined": "교정됨",
+      "raw": "원본",
+      "refinedHint": "Qwen3로 교정됨 · {{model}}",
+      "rawHint": "Whisper로 전사됨 · {{model}}"
+    },
+    "actions": {
+      "configure": "구성",
+      "import": "가져오기",
+      "importing": "업로드 중…",
+      "dictate": "받아쓰기",
+      "stop": "중단",
+      "copy": "복사",
+      "refine": "다듬기",
+      "reRefine": "다시 다듬기",
+      "export": "내보내기",
+      "exportDropdownLabel": "다른 형식으로 내보내기",
+      "exportAudio": "오디오 (WAV)",
+      "exportTranscript": "전사 텍스트 (TXT)",
+      "exportMarkdown": "마크다운 (MD)",
+      "delete": "삭제",
+      "playAs": "{{name}}(으)로 재생",
+      "playAsFallback": "재생 방법…",
+      "playAsGenerating": "생성 중…",
+      "playAsStop": "중단 · {{name}}",
+      "playAsStopFallback": "중단 · 음성",
+      "playAsDropdownLabel": "전사 내용을 다음 음성으로 재생"
+    },
+    "empty": {
+      "noMatches": "\"{{query}}\"와 일치하는 캡처가 없습니다",
+      "none": "아직 캡처가 없습니다.",
+      "loading": "캡처 로딩 중…",
+      "pickOne": "전사 내용을 보려면 캡처를 선택하세요.",
+      "holdToRecord": "길게 눌러 녹음",
+      "toggleHandsFree": "핸즈프리 토글",
+      "pressShortcut": "컴퓨터 어디에서나 단축키를 눌러 첫 번째 캡처를 시작하세요.",
+      "turnOnShortcut": "어디서나 받아쓰기를 하려면 전역 단축키를 켜세요. 또는 위의 '받아쓰기'를 클릭해 앱 내 캡처를 시작하세요.",
+      "openSettings": "캡처 설정 열기"
+    },
+    "deleteDialog": {
+      "title": "캡처 삭제",
+      "description": "이 작업은 캡처와 오디오, 전사 내용을 영구적으로 삭제합니다. 되돌릴 수 없습니다.",
+      "deleting": "삭제 중…"
+    },
+    "toast": {
+      "deleteFailed": "삭제 실패",
+      "playAsFailed": "재생 생성 실패",
+      "noVoice": "음성 프로필 없음",
+      "noVoiceDescription": "재생 기능을 사용하기 전 음성 프로필을 먼저 생성하세요.",
+      "transcriptCopied": "전사 내용이 복사되었습니다",
+      "copyFailed": "복사 실패",
+      "exportSuccess": "{{path}}(으)로 내보냈습니다",
+      "exportFailed": "내보내기 실패",
+      "exportEmpty": "내보낼 내용이 없습니다",
+      "shortcutNotArmed": "단축키가 켜져 있으나 아직 활성화되지 않음",
+      "shortcutNotArmedDescription_one": "{{names}} 파일을 아직 다운로드해야 합니다. 시작하려면 캡처 탭을 여세요.",
+      "shortcutNotArmedDescription_other": "{{names}} 파일들을 아직 다운로드해야 합니다. 시작하려면 캡처 탭을 여세요."
+    },
+    "pill": {
+      "recording": "녹음 중",
+      "transcribing": "전사 중",
+      "refining": "다듬는 중",
+      "speaking": "말하는 중",
+      "completed": "완료",
+      "stopAria": "녹음 중지",
+      "errorFallback": "문제가 발생했습니다",
+      "errorCopyTooltip": "클릭하여 오류 복사"
+    },
+    "chord": {
+      "capturing": "캡처 중…",
+      "pressShortcut": "단축키를 누르세요",
+      "noKeys": "설정된 키 없음",
+      "unsupported": "\"{{key}}\" 키는 단축키 조합에서 지원되지 않습니다. 수정 키(Ctrl/Alt 등)나 문자 키를 사용해 보세요.",
+      "notSet": "설정 안 됨"
+    },
+    "readiness": {
+      "title": "받아쓰기 전 확인 사항",
+      "subheading": "아래 항목이 모두 준비될 때까지 단축키는 비활성 상태로 유지됩니다.",
+      "downloadButton": "다운로드",
+      "downloading": "다운로드 중…",
+      "downloadingPercent": "다운로드 중… {{pct}}%",
+      "downloadStarted": "다운로드 시작됨",
+      "downloadStartedDescription": "{{name}} 다운로드 중입니다. 완료되면 단축키가 자동으로 활성화됩니다.",
+      "downloadFailed": "다운로드 실패",
+      "stt": {
+        "label": "{{name}} (음성 인식)",
+        "ready": "모델 다운로드 완료.",
+        "missing": "오디오 전사에 필요함",
+        "missingWithSize": "오디오 전사에 필요함 · {{size}}"
+      },
+      "llm": {
+        "label": "{{name}} (교정)",
+        "ready": "모델 다운로드 완료.",
+        "missing": "붙여넣기 전 원본 전사 내용을 정리함",
+        "missingWithSize": "붙여넣기 전 원본 전사 내용을 정리함 · {{size}}"
+      },
+      "inputMonitoring": {
+        "label": "입력 모니터링 권한",
+        "ready": "macOS에서 Voicebox가 전역 단축키를 감지하도록 허용되었습니다.",
+        "missing": "macOS에서 Voicebox가 전역 단축키를 감지할 수 있도록 허용이 필요합니다.",
+        "openSettings": "설정 열기"
+      },
+      "accessibility": {
+        "label": "손쉬운 사용 권한",
+        "ready": "Voicebox가 다른 앱에 전사 내용을 붙여넣을 수 있습니다.",
+        "missing": "전사 내용을 활성화된 앱에 붙여넣기 위해 필요합니다.",
+        "openSettings": "설정 열기"
+      }
+    },
+    "permissions": {
+      "accessibility": {
+        "title": "자동 붙여넣기를 위해 손쉬운 사용 권한 허용",
+        "body": "다른 앱에 전사 내용을 붙여넣으려면 <path>시스템 설정 → 개인정보 보호 및 보안 → 손쉬운 사용</path>에서 Voicebox를 허용해야 합니다. 권한이 없어도 받아쓰기 내용은 캡처 탭에 저장됩니다.",
+        "openSettings": "설정 열기",
+        "recheck": "허용함",
+        "rechecking": "확인 중…",
+        "stillMissing": "아직 감지되지 않았습니다. 권한을 설정한 후 Voicebox를 종료하고 다시 열어야 할 수도 있습니다."
+      },
+      "inputMonitoring": {
+        "title": "전역 단축키 사용을 위해 입력 모니터링 권한 허용",
+        "body": "단축키 조합을 감지하려면 <path>시스템 설정 → 개인정보 보호 및 보안 → 입력 모니터링</path> 권한이 필요합니다. 토글이 켜져 있어도 macOS가 허용 전까지 키 이벤트를 차단할 수 있습니다.",
+        "openSettings": "설정 열기",
+        "recheck": "허용함",
+        "rechecking": "확인 중…",
+        "stillMissing": "아직 감지되지 않았습니다. 권한을 설정한 후 Voicebox를 종료하고 다시 열어야 할 수도 있습니다."
+      }
+    }
+  },
+  "voicesTab": {
+    "title": "음성",
+    "loading": "음성 로딩 중…",
+    "searchPlaceholder": "음성 검색…",
+    "newVoice": "새 음성",
+    "avatarAlt": "{{name}} 아바타",
+    "selectChannels": "채널 선택…",
+    "channelDefaultLabel": "{{name}} (기본값)",
+    "columns": {
+      "name": "이름",
+      "language": "언어",
+      "generations": "생성 수",
+      "samples": "샘플",
+      "effects": "효과",
+      "channels": "채널"
+    }
+  },
+  "voiceInspector": {
+    "loading": "로딩 중…",
+    "defaultEffectsHint": "이 음성으로 새로 생성할 때 자동으로 적용됩니다.",
+    "fields": {
+      "description": "설명"
+    },
+    "toast": {
+      "invalidImageFormat": "PNG, JPG 또는 WebP 파일을 선택하세요",
+      "avatarUpdated": "아바타가 업데이트되었습니다",
+      "savedDescription": "\"{{name}}\" 설정이 저장되었습니다."
+    }
+  },
+  "audioChannels": {
+    "title": "오디오 채널",
+    "newChannel": "새 채널",
+    "loading": "로딩 중…",
+    "confirmDelete": "이 채널을 삭제하시겠습니까?",
+    "noVoicesAssigned": "할당된 음성 없음",
+    "selectDevice": "장치 선택",
+    "addDevice": "장치 추가",
+    "addVoice": "음성 추가",
+    "defaultSuffix": "기본",
+    "empty": {
+      "message": "아직 오디오 채널이 없습니다. 특정 장치로 음성을 보내려면 첫 번째 채널을 만드세요.",
+      "action": "채널 생성"
+    },
+    "labels": {
+      "outputDevices": "출력 장치",
+      "assignedVoices": "할당된 음성"
+    },
+    "devices": {
+      "title": "사용 가능한 장치",
+      "defaultNote": "기본 채널은 시스템 기본 장치를 사용합니다",
+      "toggleHint": "장치를 클릭하여 선택한 채널에 추가하거나 제거하세요",
+      "selectHint": "장치를 할당할 채널을 선택하세요",
+      "empty": "오디오 장치를 찾을 수 없습니다",
+      "requiresTauri": "오디오 장치 선택에는 Tauri가 필요합니다"
+    },
+    "fields": {
+      "name": "채널 이름",
+      "namePlaceholder": "예: 가상 케이블, 방송용"
+    },
+    "createDialog": {
+      "title": "오디오 채널 생성",
+      "description": "음성을 특정 출력 장치로 보내기 위한 새 오디오 채널(버스)을 만듭니다.",
+      "action": "생성"
+    },
+    "editDialog": {
+      "title": "채널 편집",
+      "description": "채널 설정 및 음성 할당을 업데이트합니다."
+    }
+  },
+  "profileForm": {
+    "createTitle": "음성 생성",
+    "editTitle": "음성 편집",
+    "createDescription": "오디오 샘플이나 내장 음성을 사용해 새 음성 프로필을 만듭니다.",
+    "editDescription": "음성 프로필 상세 정보를 업데이트하고 샘플을 관리합니다.",
+    "draftRestored": "초안이 복구되었습니다",
+    "discard": "삭제",
+    "source": {
+      "clone": "오디오에서 복제",
+      "builtin": "내장 음성"
+    },
+    "builtin": {
+      "hint": "미리 제작된 음성을 선택하세요. 오디오 샘플이 필요하지 않습니다.",
+      "badge": "내장 음성",
+      "note": "이 프로필은 내장 음성을 사용합니다. 생성 후에는 음성을 변경할 수 없습니다."
+    },
+    "sampleTabs": {
+      "upload": "업로드",
+      "record": "녹음",
+      "system": "시스템 오디오"
+    },
+    "fields": {
+      "engine": "엔진",
+      "voice": "음성",
+      "name": "이름",
+      "namePlaceholder": "내 음성",
+      "descriptionLabel": "설명 (선택 사항)",
+      "descriptionPlaceholder": "이 음성에 대해 설명해주세요…",
+      "language": "언어",
+      "referenceText": "참조 텍스트",
+      "referenceTextPlaceholder": "오디오에서 발화된 정확한 텍스트를 입력하세요…",
+      "defaultEngine": "기본 엔진",
+      "noPreference": "선호 없음",
+      "defaultEngineHint": "프로필 선택 시 이 엔진을 자동으로 선택합니다.",
+      "defaultEffects": "기본 효과",
+      "defaultEffectsHint": "이 음성으로 생성되는 모든 항목에 자동으로 적용되는 효과입니다.",
+      "personalityLabel": "성격",
+      "personalityPlaceholder": "예: \"항해 은유법으로만 말하는 까칠한 해적\"",
+      "personalityHint": "이 음성의 정체성과 말투를 정의합니다. 작성 버튼과 캐릭터 재작성 토글에 영향을 줍니다. 비워두면 두 기능이 숨겨집니다."
+    },
+    "avatar": {
+      "alt": "아바타 미리보기"
+    },
+    "actions": {
+      "saving": "저장 중…",
+      "saveChanges": "변경 사항 저장",
+      "createProfile": "프로필 생성"
+    },
+    "validation": {
+      "nameRequired": "이름이 필요합니다",
+      "referenceRequired": "샘플 추가 시 참조 텍스트가 필요합니다",
+      "sampleRequired": "오디오 샘플이 필요합니다",
+      "referenceTextRequired": "참조 텍스트가 필요합니다",
+      "audioTooLong": "오디오가 너무 깁니다 ({{duration}}). 최대 길이는 {{max}}입니다.",
+      "audioFailed": "오디오 파일 검증에 실패했습니다. 다른 파일을 시도해 보세요."
+    },
+    "toast": {
+      "recordingComplete": "녹음 완료",
+      "recordingCompleteDescription": "오디오가 성공적으로 녹음되었습니다.",
+      "recordingError": "녹음 오류",
+      "systemAudioCaptured": "시스템 오디오 캡처됨",
+      "systemAudioCapturedDescription": "오디오가 성공적으로 캡처되었습니다.",
+      "systemAudioError": "시스템 오디오 캡처 오류",
+      "transcribeFailed": "전사 실패",
+      "transcribeFailedFallback": "오디오 전사에 실패했습니다",
+      "noFile": "선택된 파일 없음",
+      "noFileDescription": "먼저 오디오 파일을 선택하세요.",
+      "invalidFile": "잘못된 파일 형식",
+      "invalidImageFormat": "이미지 파일(PNG, JPG 또는 WebP)을 선택하세요",
+      "fileTooLarge": "파일이 너무 큼",
+      "imageTooLargeDescription": "이미지는 5MB보다 작아야 합니다",
+      "avatarRemoved": "아바타 제거됨",
+      "avatarRemovedDescription": "아바타 이미지가 성공적으로 제거되었습니다.",
+      "avatarRemoveFailed": "아바타 제거 실패",
+      "avatarUploadFailed": "아바타 업로드 실패",
+      "avatarUploadFailedFallback": "아바타 업로드에 실패했습니다",
+      "effectsUpdateFailed": "효과 업데이트 실패",
+      "effectsUpdateFailedFallback": "효과 체인 저장에 실패했습니다",
+      "voiceUpdated": "음성 업데이트됨",
+      "voiceUpdatedDescription": "\"{{name}}\"이(가) 성공적으로 업데이트되었습니다.",
+      "noVoiceSelected": "선택된 음성 없음",
+      "noVoiceSelectedDescription": "내장 음성을 선택하세요.",
+      "profileCreated": "프로필 생성됨",
+      "profileCreatedBuiltin": "\"{{name}}\" 프로필이 내장 음성으로 생성되었습니다.",
+      "profileCreatedSample": "\"{{name}}\" 프로필이 샘플과 함께 생성되었습니다.",
+      "sampleRequired": "오디오 샘플 필요",
+      "sampleRequiredDescription": "음성 프로필을 만들려면 오디오 샘플을 제공해야 합니다.",
+      "referenceTextRequired": "참조 텍스트 필요",
+      "referenceTextRequiredDescription": "오디오 샘플에 대한 참조 텍스트를 입력하세요.",
+      "invalidAudio": "잘못된 오디오 파일",
+      "invalidAudioDescription": "오디오 길이가 {{duration}}이며, 최대 {{max}}까지 허용됩니다.",
+      "validationError": "검증 오류",
+      "rollbackFailed": "롤백 실패",
+      "rollbackFailedDescription": "샘플 업로드 실패 후 생성된 프로필을 제거할 수 없습니다.",
+      "profileRolledBack": "프로필 생성이 취소되었습니다(롤백).",
+      "sampleFailed": "샘플 추가 실패",
+      "sampleFailedDescription": "샘플을 추가하지 못했습니다.",
+      "sampleFailedRolledBack": "샘플 추가 실패로 프로필 생성이 취소되었습니다.",
+      "saveFailed": "프로필 저장 실패"
+    }
+  }
+}
