@@ -23,3 +23,17 @@ def test_parse_voice_block_keeps_plain_text_unchanged():
 def test_merge_voice_attrs_into_existing_instruct():
     merged = _merge_voice_attrs_into_instruct("Speak clearly", {"emotion": "angry", "pace": "fast"})
     assert merged == "Speak clearly\nVoice style: emotion: angry, pace: fast"
+
+
+def test_parse_voice_block_does_not_parse_partial_embedded_tag():
+    src = '앞부분 <v emotion="angry">중간</v> 뒷부분'
+    text, attrs = _parse_voice_block(src)
+    assert text == src
+    assert attrs == {}
+
+
+def test_parse_voice_block_does_not_parse_multiple_segments():
+    src = '<v emotion="angry">하나</v> <v pace="fast">둘</v>'
+    text, attrs = _parse_voice_block(src)
+    assert text == src
+    assert attrs == {}

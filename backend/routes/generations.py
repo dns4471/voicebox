@@ -43,7 +43,10 @@ def _parse_voice_block(text: str) -> tuple[str, dict[str, str]]:
     for am in _VOICE_ATTR_RE.finditer(m.group("attrs") or ""):
         attrs[am.group("name").lower()] = unescape(am.group("value").strip())
 
-    body = unescape((m.group("body") or "").strip())
+    body_raw = (m.group("body") or "")
+    if "<v" in body_raw.lower() or "</v>" in body_raw.lower():
+        return text, {}
+    body = unescape(body_raw.strip())
     return body or text, attrs
 
 
@@ -367,6 +370,9 @@ async def stream_speech(
     tts_model = get_tts_backend_for_engine(engine)
     model_size = data.model_size or "1.7B"
 
+    text, voice_attrs = _parse_voice_block(data.text)
+    instruct = _merge_voice_attrs_into_instruct(data.instruct, voice_attrs)
+
     await ensure_model_cached_or_raise(engine, model_size)
     await load_engine_model(engine, model_size)
 
@@ -386,7 +392,7 @@ async def stream_speech(
 
     audio, sample_rate = await generate_chunked(
         tts_model,
-        data.text,
+        text,
         voice_prompt,
         language=data.language,
         seed=data.seed,
