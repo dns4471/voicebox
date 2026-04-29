@@ -5,6 +5,9 @@ import logging
 import uuid
 from pathlib import Path
 
+import re
+from html import unescape
+
 from fastapi import APIRouter, Depends, File, HTTPException, UploadFile
 from fastapi.responses import StreamingResponse
 from sqlalchemy.orm import Session
@@ -24,6 +27,37 @@ router = APIRouter()
 IMPORTED_AUDIO_PROFILE_NAME = "Imported Audio"
 IMPORT_AUDIO_EXTENSIONS = {".wav", ".mp3", ".flac", ".ogg", ".m4a", ".aac", ".webm"}
 IMPORT_AUDIO_MAX_BYTES = 200 * 1024 * 1024  # 200 MB
+
+
+_VOICE_BLOCK_RE = re.compile(r"^\s*<v\s*(?P<attrs>[^>]*)>(?P<body>.*?)</v>\s*$", re.DOTALL | re.IGNORECASE)
+_VOICE_ATTR_RE = re.compile(r"(?P<name>emotion|pace|tone|volume|action)\s*=\s*[\"'](?P<value>.*?)[\"']", re.IGNORECASE)
+
+
+def _parse_voice_block(text: str) -> tuple[str, dict[str, str]]:
+    """Parse `<v ...>...</v>` blocks and return plain text + supported attrs."""
+    m = _VOICE_BLOCK_RE.match(text)
+    if not m:
+        return text, {}
+
+    attrs: dict[str, str] = {}
+    for am in _VOICE_ATTR_RE.finditer(m.group("attrs") or ""):
+        attrs[am.group("name").lower()] = unescape(am.group("value").strip())
+
+    body_raw = (m.group("body") or "")
+    if "<v" in body_raw.lower() or "</v>" in body_raw.lower():
+        return text, {}
+    body = unescape(body_raw.strip())
+    return body or text, attrs
+
+
+def _merge_voice_attrs_into_instruct(instruct: str | None, attrs: dict[str, str]) -> str | None:
+    if not attrs:
+        return instruct
+    parts = [f"{k}: {v}" for k, v in attrs.items() if v]
+    if not parts:
+        return instruct
+    block = "Voice style: " + ", ".join(parts)
+    return f"{instruct.strip()}\n{block}" if instruct and instruct.strip() else block
 
 
 def _get_or_create_import_profile(db: Session) -> DBVoiceProfile:
@@ -76,7 +110,8 @@ async def generate_speech(
 
     model_size = (data.model_size or "1.7B") if engine_has_model_sizes(engine) else None
 
-    text = data.text
+    text, voice_attrs = _parse_voice_block(data.text)
+    instruct = _merge_voice_attrs_into_instruct(data.instruct, voice_attrs)
     source = "manual"
     if data.personality and getattr(profile, "personality", None):
         try:
@@ -96,7 +131,7 @@ async def generate_speech(
         duration=0,
         seed=data.seed,
         db=db,
-        instruct=data.instruct,
+        instruct=instruct,
         generation_id=generation_id,
         status="generating",
         engine=engine,
@@ -135,7 +170,7 @@ async def generate_speech(
             seed=data.seed,
             normalize=data.normalize,
             effects_chain=effects_chain_config,
-            instruct=data.instruct,
+            instruct=instruct,
             mode="generate",
             max_chunk_chars=data.max_chunk_chars,
             crossfade_ms=data.crossfade_ms,
@@ -335,6 +370,9 @@ async def stream_speech(
     tts_model = get_tts_backend_for_engine(engine)
     model_size = data.model_size or "1.7B"
 
+    text, voice_attrs = _parse_voice_block(data.text)
+    instruct = _merge_voice_attrs_into_instruct(data.instruct, voice_attrs)
+
     await ensure_model_cached_or_raise(engine, model_size)
     await load_engine_model(engine, model_size)
 
@@ -354,11 +392,11 @@ async def stream_speech(
 
     audio, sample_rate = await generate_chunked(
         tts_model,
-        data.text,
+        text,
         voice_prompt,
         language=data.language,
         seed=data.seed,
-        instruct=data.instruct,
+        instruct=instruct,
         max_chunk_chars=data.max_chunk_chars,
         crossfade_ms=data.crossfade_ms,
         trim_fn=trim_fn,
